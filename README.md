@@ -1,3 +1,6 @@
-# node.js
+# Experiências com: node.js
 
-mongod + mongo
+Nesse repositório você vai encontrar:
+
+>* CRUD basico
+>* CRUD de formulário (usando o MongoDB)
