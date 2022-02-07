@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Formulário</title>
+</head>
+<body>
+    <h1>Editar Registro</h1>
+    <% data.forEach(function(details) { %>
+        <form action="/edit/<%= details._id %>" method="post">
+            <input type="text" value="<%= details.name %>" name="name">
+            <input type="text" value="<%= details.surname %>" name="surname">
+            <button><a href="/show">Todos</a></button>
+            <button type="submit">Editar</button>
+        </form>
+    <% })%>
+</body>
+</html>
