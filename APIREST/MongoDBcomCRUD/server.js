@@ -55,7 +55,7 @@ app.post('/show', (req,res) => {
 })
 
 
-app.route('/edit/:id') //pegando os dados a serem atualizados
+app.route('/edit/:id') //pegando os dados no parâmetro :id a serem atualizados
 .get((req,res) => {
     var id = req.params.id
     db.collection('data').find(ObjectId(id)).toArray((err,result) =>{
