@@ -3,7 +3,33 @@ const req = require('express/lib/request')
 const server = express()
 
 server.use(express.json())
-const teste = ['teste01', 'teste02', 'teste03']
+
+const teste = [
+    {
+        "userId": 0,
+        "id": 1, 
+        "title": "teste",
+        "body": "exemplo" 
+    }
+    ,{
+        "userId": 1,
+        "id": 2,
+        "title": "teeeqwste",
+        "body": "eexemplo"
+    },
+    {
+        "userId": 2,
+        "id": 3,
+        "title": "teste",
+        "body": "exewermplo"
+    },
+    {
+        "userId": 3,
+        "id": 4,
+        "title": "tewereeste",
+        "body": "eexeasdmplo"
+    }
+]
 
 //retornar só um "teste"
 
@@ -17,15 +43,15 @@ server.get('/teste/uc', (req, res) => {
 
 //retornar todos os "teste"
 
-server.get('/teste/:index', (req,res) => {
-    return res.json(teste[req.user])
+server.get('/teste/:id', (req,res) => {
+    return res.json(teste[req.params.id])
 })
 
 //insere um "teste"
 
 server.post('/teste', (req, res) => {
-    const { name } = req.body
-    teste.push(name);
+    const { userId, id, title, body } = req.body
+    teste.push({userId, id, title,body});
     return res.json(teste)
 })
 
@@ -33,19 +59,21 @@ server.post('/teste', (req, res) => {
 
 server.put('/teste/:index', (req, res) => {
     const { index } = req.params
-    const {name} = req.body
+    const { userId, id, title, body } = req.body
 
-    teste[index] = name;
+    teste[index] = {userId, id, title,body};
 
     return res.json(teste)
 })
 
 //deleta um "teste"
 
-server.delete('/teste/:index', (req, res) => {
-    const { index } = req.params
 
-    teste.splice(index,1)
+server.delete('/teste/:id', (req, res) => {
+    
+    const { id } = req.params
+
+    teste.splice(id,1)
 
     return res.send()
 })
@@ -96,6 +124,6 @@ server.put('/teste/:index',checkTesteInArray,checkTesteExist,(req,res) => {
     return res.json(teste)
 })
 
-server.listen(3000, function(){
+server.listen(8000, function(){
     console.log('Servidor funcionando localmente :) ')
 });
